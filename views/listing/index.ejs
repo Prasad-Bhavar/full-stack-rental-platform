@@ -30,7 +30,7 @@
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                
+
             }
 
             .search-btn {
@@ -61,10 +61,10 @@
             </div>
 
             <div class="search-bar">
-                <form class="d-flex" role="search">
+                <form action="/listing" method="get" class="d-flex" role="search">
                     <input class="form-control me-2 search-input" type="search" placeholder="Search destination"
-                        aria-label="Search">
-                    <button class="btn btn-danger search-btn" type="submit"><i
+                        aria-label="Search" name="search">
+                    <button type="submit" class="btn btn-danger search-btn" type="submit"><i
                             class="fa-solid fa-magnifying-glass "></i>search</button>
                 </form>
             </div>

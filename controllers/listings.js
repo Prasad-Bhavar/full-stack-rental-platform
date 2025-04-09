@@ -2,8 +2,19 @@ const Listing = require("../models/listing");
 
 module.exports.index = async (req, res) => {
   try {
+    const searchQuery = req.query.search;
+
+    console.log(searchQuery);
     let allLists = await Listing.find();
-    // console.log(allLists);
+    
+    let filteredListings = allLists.filter(list =>
+      list.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  if(searchQuery != " "){
+    allLists = filteredListings;
+  }
+  
+    
     res.render("./listing/index.ejs", { allLists });
   } catch (err) {
     next(err);
