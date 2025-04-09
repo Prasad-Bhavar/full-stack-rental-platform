@@ -1,19 +1,22 @@
 const Listing = require("../models/listing");
 
-module.exports.index = async (req, res) => {
+module.exports.index = async (req, res,next) => {
   try {
     const searchQuery = req.query.search;
+    // console.log("Search Query:", searchQuery);
 
-    console.log(searchQuery);
+    // Fetch all listings
     let allLists = await Listing.find();
-    
-    let filteredListings = allLists.filter(list =>
-      list.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  if(searchQuery != " "){
-    allLists = filteredListings;
-  }
-  
+    // console.log("All Listings:", allLists);
+
+    // If search query exists and is not empty, filter manually
+    if (searchQuery && searchQuery.trim() !== "") {
+      const lowerSearch = searchQuery.toLowerCase();
+
+      allLists = allLists.filter((list) =>
+        list.title && list.title.toLowerCase().includes(lowerSearch)
+      );
+    }
     
     res.render("./listing/index.ejs", { allLists });
   } catch (err) {
