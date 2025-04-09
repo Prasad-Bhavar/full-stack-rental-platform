@@ -13,7 +13,12 @@
           <p class="card-text">
             <hr>
           <p><b>Owner: </b>
-            <%= listing.owner.username %>
+            <% if (listing.owner) { %>
+              <%= listing.owner?.username %>
+                <%} else {%>
+                  Unknown
+                  <%} %>
+
           </p>
           <b>
             <%= listing.description %>
@@ -26,7 +31,7 @@
         </div>
       </div>
 
-      <% if (currUser && listing.owner._id.equals(currUser._id)) { %>
+      <% if (currUser && listing.owner?._id.equals(currUser._id)) { %>
 
         <div class="row show-btns">
           <div class="col-1 mb-2">
@@ -95,9 +100,12 @@
                   <%=review.comment%>
                 </p>
 
-                <form action="/listing/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE" method="post">
-                  <button class="btn btn-dark mt-2 mb-2">Delete</button>
-                </form>
+                <% if (currUser) { %>
+                  <form action="/listing/<%= listing._id%>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                    <button class="btn btn-dark mt-2 mb-2">Delete</button>
+                  </form>
+                  <%}%>
+
               </div>
             </div>
             <% } %>
