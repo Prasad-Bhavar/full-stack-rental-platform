@@ -1,0 +1,171 @@
+<style>
+    .container {
+        flex: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+        margin-top: 2rem;
+        background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2') center center / cover no-repeat;
+        color: white;
+        padding: 100px 10px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-top: 15px;
+    }
+
+    .hero .btn {
+        margin-top: 25px;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        background-color: #fe424d !important;
+        border: none !important;
+        color: white !important;
+        border-radius: 0.3rem !important;
+    }
+
+    /* Image Cards Section */
+    .image-row {
+        margin-top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .image-card {
+        width: 300px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        margin-bottom: 2rem
+    }
+
+    .image-card:hover {
+        opacity: 0.9;
+    }
+
+    .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        
+    }
+
+    .image-caption {
+        padding: 15px;
+        background-color: #f8f9fa;
+        font-weight: 500;
+    }
+
+    /* Final Info Section Styling */
+section.container.my-5 {
+    padding: 3rem 1rem;
+}
+
+section.container h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: #333;
+}
+
+section.container p.lead {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section.container .row h5 {
+    font-weight: 600;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #fe424d;
+}
+
+section.container .row p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 767px) {
+    section.container .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section.container .row h5 {
+        margin-top: 2rem;
+    }
+}
+
+</style>
+
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Dream Home or Room</h1>
+                <p>Comfortable. Affordable. Verified Rentals — All in One Place.</p>
+                <a href="/listing" class="btn btn-light">Explore Listings</a>
+            </div>
+        </section>
+
+        <!-- Final Info Section -->
+        <section class="container my-5">
+            <div class="text-center">
+                <h2 class="mb-3">Why Choose RentNest?</h2>
+                <p class="lead">
+                    Whether you're a student, working professional, or a small family, RentNest brings you the best
+                    rental options tailored to your needs.
+                    From fully-furnished rooms to spacious independent homes, we've got you covered.
+                </p>
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <h5>✔ Verified Listings</h5>
+                        <p>All homes and rooms are verified for safety and legality before being listed.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>✔ Easy Booking</h5>
+                        <p>Browse, shortlist, and book directly — all through our easy-to-use platform.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>✔ Affordable Prices</h5>
+                        <p>We offer rentals to fit every budget — with transparent pricing and no hidden costs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Images Section -->
+        <div class="container image-row">
+            <div class="image-card">
+                <img src="/media/images2.webp" alt="Modern House">
+                <div class="image-caption">Spacious Modern House</div>
+            </div>
+            <div class="image-card">
+                <img src="/media/images4.jpeg" alt="Cozy Apartment">
+                <div class="image-caption">Cozy Urban Apartment</div>
+            </div>
+            <div class="image-card">
+                <img src="/media/images5.jpeg" alt="Room for Rent">
+                <div class="image-caption">Affordable Room for Rent</div>
+            </div>
+        </div>
+    </body>

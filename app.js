@@ -90,7 +90,9 @@ app.use((req, res, next) => {
 app.use("/listing", listingRouter);
 app.use("/listing", reviewRouter);
 app.use("/", userRouter);
-
+app.get('/',(req,res)=>{
+  res.render('./listing/home.ejs');
+})
 // app.get('/demouser',async(req,res)=>{
 //     const fakeUser = new User({
 //         email:'prasad04@gmail.com',
