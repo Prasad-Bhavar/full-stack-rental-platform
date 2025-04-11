@@ -12,6 +12,7 @@ body{
 .navbar{
     /* height: 4rem; */
     background-color: white;
+    padding: 0.7rem 5rem !important;
 }
 .fa-regular{
     color: #fe424d;
@@ -106,3 +107,4 @@ body{
 .show-btns{
     display: flex;
 }
+

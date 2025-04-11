@@ -3,7 +3,17 @@ if (process.env.NODE_ENV != "production") {
 }
 
 const express = require("express");
+const rateLimit = require("express-rate-limit");
+
 const app = express();
+const limiter = rateLimit({
+  max: 3,
+  windowMs: 60 * 60 * 1000,
+  // message: "Too many request Arrived, Please try Later",
+  handler: (req, res) => {
+    res.status(429).render("listing/ratelimit");
+  },
+});
 const mongoose = require("mongoose");
 const dburl = process.env.MONGO_URL;
 const path = require("path");
@@ -79,6 +89,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//rate Limiting
+app.use("/listing", limiter);
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -90,9 +103,9 @@ app.use((req, res, next) => {
 app.use("/listing", listingRouter);
 app.use("/listing", reviewRouter);
 app.use("/", userRouter);
-app.get('/',(req,res)=>{
-  res.render('./listing/home.ejs');
-})
+app.get("/", (req, res) => {
+  res.render("./listing/home.ejs");
+});
 // app.get('/demouser',async(req,res)=>{
 //     const fakeUser = new User({
 //         email:'prasad04@gmail.com',

@@ -1,6 +1,8 @@
+
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/"><img src="/media/logo.jpg" alt="" style="width: 4rem; border-radius: 50%;"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,19 +13,20 @@
         <!-- <a class="nav-link disabled" >Disabled</a> -->
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listing/new">Add new Listing</a>
-        <%if(!currUser){%>
-          <a class="nav-link active" href="/signup"><b>signup </b></a>
-          <a class="nav-link" href="/login"><b>Log-in</b></a>
+        
+
+        <%if(currUser){%>
+          <a class="nav-link" href="/listing/new">Add new Listing</a>
           <%}%>
-            <%if(currUser){%>
-              <a class="nav-link" href="/logout">log-out</a>
+            <%if(!currUser){%>
+              <a class="nav-link active" href="/signup"><b>signup </b></a>
+              <a class="nav-link" href="/login"><b>Log-in</b></a>
               <%}%>
-                <!-- <a class="nav-link disabled" >Disabled</a> -->
+                <%if(currUser){%>
+                  <a class="nav-link" href="/logout">log-out</a>
+                  <%}%>
+                    <!-- <a class="nav-link disabled" >Disabled</a> -->
       </div>
     </div>
   </div>
 </nav>
-
-
-
